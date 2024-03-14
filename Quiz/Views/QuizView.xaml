@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Quiz.Views.QuizView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quiz.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280" FontFamily="/Fonts/#Rubik" FontSize="14">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="CreateSaveQuestionBtn_OnClick" Name="CreateSaveQuestionBtn" Grid.Column="0">Create Question</Button>
+            <Button Click="CreateSaveQuizBtn_OnClick"  Name="CreateSaveQuizBtn" Grid.Column="1">Create Quiz</Button>
+            <Button Click="CreateSaveCategoryBtn_OnClick" Name="CreateSaveCategoryBtn" Grid.Column="2">Edit Categories</Button>
+            <Button Click="RemoveBtn_OnClick" Name="RemoveBtn" Grid.Column="3">Remove</Button>
+            <Button Click="EditBtn_OnClick" Name="EditBtn" Grid.Column="4">View</Button>
+        </Grid>
+        <Label Grid.Row="1" FontSize="24" FontWeight="Bold" VerticalAlignment="Center">Your Quizzes</Label>
+        <Label Grid.Row="1" Grid.Column="1" FontSize="24" FontWeight="Bold" VerticalAlignment="Center">Your Questions</Label>
+        <ComboBox SelectionChanged="CategoryFilter_OnSelectionChanged" Height="35" Width="200" Name="CategoryFilter" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+        <Button Click="ResetFilter_OnClick" Name="ResetFilter" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,220,0">Reset</Button>
+        <ListView SelectionChanged="QuizList_OnSelectionChanged" Name="QuizList" Grid.Column="0" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Category.Name}" Header="Category"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Questions.Count}" Header="Number of questions"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Click="AddRemoveQuestionsBtn_OnClick" Name="AddRemoveQuestionsBtn" Grid.Row="3">Add/Remove Questions</Button>
+        <ListView Grid.RowSpan="2"  SelectionChanged="QuestionList_OnSelectionChanged" Name="QuestionList" Grid.Row="2" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding Category.Name}" Header="Category"/>
+                        <GridViewColumn Width="300" DisplayMemberBinding="{Binding Content}" Header="Content"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Answers.Count}" Header="Number of Answers"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

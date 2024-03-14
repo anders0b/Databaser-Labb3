@@ -1,0 +1,56 @@
+﻿<Window x:Class="Quiz.Windows.CreateSaveCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quiz.Windows"
+        mc:Ignorable="d"
+        Title="Create/Edit Categories" ResizeMode="NoResize" Height="500" Width="500" FontFamily="/Fonts/#Rubik" FontSize="14">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView SelectionChanged="CategoryList_OnSelectionChanged" Name="CategoryList" Grid.Row="5" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Button Click="RemoveCategoryBtn_OnClick" Name="RemoveCategoryBtn" Grid.Column="0">Remove Category</Button>
+            <Button Click="UpdateCategoryBtn_OnClick" Name="UpdateCategoryBtn" Grid.Column="1">Update Category</Button>
+            <Button Click="CreateCategoryBtn_OnClick" Name="CreateCategoryBtn"  Grid.Column="2">Create New Category</Button>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center">Category Name:</Label>
+            <TextBox Name="CategoryNameBox" Grid.Column="1"></TextBox>
+        </Grid>
+        <Label Grid.Column="1" Grid.Row="1" FontSize="18" FontWeight="Bold">Categories</Label>
+        <Button Grid.Row="6" Click="CloseWindowBtn_OnClick"  Name="CloseWindowBtn" Grid.Column="1">Close window</Button>
+    </Grid>
+</Window>

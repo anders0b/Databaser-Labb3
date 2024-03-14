@@ -1,0 +1,62 @@
+﻿<Window x:Class="Quiz.Windows.CreateSaveQuiz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quiz.Windows"
+        mc:Ignorable="d"
+        Title="Create/Edit Quizzes" ResizeMode="NoResize" Height="600" Width="500" FontSize="18" FontFamily="/Fonts/#Rubik">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="6" Panel.ZIndex="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.7*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+            <Button Click="AddQBtn_OnClick" Name="AddQBtn" Grid.Column="1" Margin="5,5,5,5" FontSize="14" Panel.ZIndex="1">Modify questions</Button>
+        </Grid>
+        <Grid Grid.Row="9" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="CancelBtn_OnClick" Name="CancelBtn" Grid.Column="0" FontSize="12">Cancel</Button>
+            <Button Click="SaveBtn_OnClick" Name="SaveBtn" Grid.Column="1" FontSize="12">Save</Button>
+        </Grid>
+        <Label Grid.Row="1" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Center">Name</Label>
+        <TextBlock Name="QuizId" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+        <TextBox Name="QuizName" Grid.Row="2" Grid.Column="1"></TextBox>
+        <Label Grid.Row="3" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Center">Category</Label>
+        <ComboBox Name="QuizCategoryBox" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center"></ComboBox>
+        <Label Grid.Row="5" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Center">Description</Label>
+        <TextBox Name="QuizDescription"  Grid.Row="6" Grid.Column="1"></TextBox>
+        <Label Grid.Row="7" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Center">Questions</Label>
+        <ListView Name="QuestionList" Grid.Row="8" Grid.Column="1" FontSize="14">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding Category.Name}" Header="Category"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Content}" Header="Content"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
